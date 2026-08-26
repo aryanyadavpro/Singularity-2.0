@@ -1,0 +1,243 @@
+/**
+ * ==========================================================================
+ * SINGULARITY 2.0 — NAVBAR
+ * Left Brand Mark + Center Translucent Pill Nav + Right Action Buttons
+ * (Clean, no scramble effect)
+ * ==========================================================================
+ */
+
+.site-header {
+  position: fixed;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Left Brand Wordmark (⚡ SINGULARITY)
+   ========================================================================== */
+.nav-brand {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  user-select: none;
+}
+
+.nav-brand:hover {
+  color: var(--color-yellow-bright);
+}
+
+.nav-brand .brand-bolt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-yellow);
+  filter: drop-shadow(0 0 8px var(--color-yellow-bright));
+  animation: pulse-dot 2.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   Center Translucent Pill Navigation
+   ========================================================================== */
+.nav-pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba(15, 20, 25, 0.6);
+  border: 1px solid rgba(243, 236, 221, 0.2);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.nav-pill:hover {
+  border-color: rgba(244, 180, 0, 0.45);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(244, 180, 0, 0.15);
+}
+
+/* Navigation Link Styling (Clean & Direct) */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-paper);
+  opacity: 0.85;
+  cursor: pointer;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  transition: color var(--transition-fast), opacity var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: var(--color-yellow-bright);
+  text-shadow: 0 0 10px rgba(244, 180, 0, 0.7);
+}
+
+.nav-link.is-active {
+  opacity: 1;
+  color: var(--color-yellow-bright);
+  background: rgba(244, 180, 0, 0.12);
+  border: 1px solid rgba(244, 180, 0, 0.25);
+}
+
+/* ==========================================================================
+   Right Action Buttons
+   ========================================================================== */
+.nav-actions {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.45rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform var(--transition-fast), background-color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), color var(--transition-fast);
+}
+
+/* Metallic Light Shine Sweep on Hover */
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-btn:hover::after {
+  opacity: 1;
+  animation: shine-sweep-btn 0.85s ease-in-out forwards;
+}
+
+.nav-btn:active {
+  transform: scale(0.96);
+}
+
+/* Sponsor Us: Dark Translucent Pill with Paper Border */
+.nav-btn-sponsor {
+  background: rgba(15, 20, 25, 0.75);
+  color: var(--color-paper);
+  border: 1px solid rgba(243, 236, 221, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-btn-sponsor:hover {
+  background: rgba(30, 35, 40, 0.9);
+  border-color: rgba(244, 180, 0, 0.5);
+  color: var(--color-yellow-bright);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(244, 180, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Apply: Vibrant Taxi Yellow Pill */
+.nav-btn-apply {
+  background-color: var(--color-yellow);
+  color: var(--color-black-deep);
+  font-weight: 700;
+  border: 1px solid var(--color-yellow-bright);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 15px rgba(244, 180, 0, 0.45);
+}
+
+.nav-btn-apply:hover {
+  background-color: var(--color-yellow-bright);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), 0 0 25px rgba(244, 180, 0, 0.75), 0 0 45px rgba(232, 84, 43, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Mobile Responsiveness
+   ========================================================================== */
+@media (max-width: 960px) {
+  .site-header {
+    top: 1rem;
+    padding: 0 1.25rem;
+  }
+
+  .nav-pill {
+    display: none;
+  }
+
+  .nav-brand {
+    font-size: 1.05rem;
+  }
+
+  .nav-btn {
+    padding: 0.5rem 1.15rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0 0.85rem;
+  }
+
+  .nav-brand .brand-text {
+    display: none;
+  }
+
+  .nav-actions {
+    gap: 0.45rem;
+  }
+
+  .nav-btn {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.78rem;
+  }
+}

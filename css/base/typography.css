@@ -1,0 +1,34 @@
+/**
+ * ==========================================================================
+ * SINGULARITY 2.0 — TYPOGRAPHY
+ * Vintage Devanagari display + bold English display + clean high-legibility sans
+ * ==========================================================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Mukta:wght@700;800&family=Rozha+One&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&family=Yatra+One&display=swap');
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-devanagari {
+  font-family: 'Rozha One', 'Yatra One', 'Mukta', serif;
+}
+
+/* Base Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-paper);
+}

@@ -1,0 +1,12 @@
+{
+  "name": "singularity-2.0",
+  "version": "1.0.0",
+  "description": "Singularity 2.0 Hackathon Landing Website",
+  "scripts": {
+    "dev": "python -m http.server 8080",
+    "start": "python -m http.server 8080"
+  },
+  "devDependencies": {
+    "agentation": "^3.0.2"
+  }
+}

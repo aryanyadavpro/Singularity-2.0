@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>SINGULARITY 2.0 — National Level Hackathon | Mumbai</title>
+  <meta name="title" content="SINGULARITY 2.0 — National Level Hackathon | Mumbai">
+  <meta name="description" content="Singularity 2.0 is India's premier retro-futuristic student hackathon held in Mumbai. 48 hours of intense coding, engineering, and groundbreaking innovation.">
+  <meta name="theme-color" content="#F4B400">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://singularity.hackathon/">
+  <meta property="og:title" content="SINGULARITY 2.0 — National Level Hackathon | Mumbai">
+  <meta property="og:description" content="48 Hours. 1,000+ Builders. The Flagship Mumbai Retro Hackathon.">
+  <meta property="og:image" content="assets/images/Main-bg.png">
+
+  <!-- Favicon Shortcut -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚕</text></svg>">
+
+  <!-- Stylesheet Hierarchy -->
+  <link rel="stylesheet" href="css/base/tokens.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/utilities/animations.css">
+  <link rel="stylesheet" href="css/sections/hero.css">
+
+  <!-- Import Map for Agentation & React Dependencies -->
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@18.3.1",
+      "react/": "https://esm.sh/react@18.3.1/",
+      "react-dom": "https://esm.sh/react-dom@18.3.1",
+      "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+      "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+      "agentation": "./node_modules/agentation/dist/index.mjs"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER: Brand Mark (Left) + Translucent Pill Nav (Center) + Actions (Right)
+       ====================================================================== -->
+  <header class="site-header" role="banner">
+    
+    <!-- Left Brand Mark -->
+    <a href="#home" class="nav-brand" aria-label="Singularity 2.0 Home">
+      <svg class="brand-bolt" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <span class="brand-text">SINGULARITY</span>
+    </a>
+
+    <!-- Center Navigation Pill (Clean Links) -->
+    <nav class="nav-pill" role="navigation" aria-label="Main Navigation">
+      <a href="#home" class="nav-link is-active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#sponsors" class="nav-link">Sponsors</a>
+      <a href="#tracks" class="nav-link">Tracks</a>
+      <a href="#team" class="nav-link">Team</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- Right Side Action Buttons with Metallic Hover Shine -->
+    <div class="nav-actions">
+      <a href="#sponsor" class="nav-btn nav-btn-sponsor">Sponsor Us</a>
+      <a href="#apply" class="nav-btn nav-btn-apply">Apply</a>
+    </div>
+
+  </header>
+
+  <!-- ======================================================================
+       MAIN CONTENT: LANDING SECTION (HERO ONLY)
+       ====================================================================== -->
+  <main id="main-content" role="main">
+    <section id="home" class="hero-section" aria-label="Singularity 2.0 Landing Section">
+      
+      <!-- Central Hero Content: Elevated in the sky above the taxi -->
+      <div class="hero-content">
+        <div class="hero-title-wrapper">
+          <img src="assets/images/singularity-font.png" alt="Singularity 2.0 Wordmark" class="hero-title-image">
+        </div>
+      </div>
+
+      <!-- Bottom Metadata Bar: Left Motto + Center Chevron + Right Location/Date -->
+      <footer class="hero-bottom-bar" role="contentinfo">
+        <div class="bottom-left">BUILD SOMETHING THAT GROWS.</div>
+        <div class="bottom-center" aria-hidden="true">
+          <svg class="scroll-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+        <div class="bottom-right">DECEMBER 19-20, 2026 • MUMBAI, INDIA</div>
+      </footer>
+
+    </section>
+  </main>
+
+  <!-- Application Logic -->
+  <script type="module" src="js/main.js"></script>
+  <!-- Agentation Visual Feedback Toolbar -->
+  <script type="module" src="js/agentation-init.js"></script>
+</body>
+</html>
