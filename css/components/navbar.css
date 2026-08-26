@@ -1,0 +1,248 @@
+/* ============================================================
+   NAVBAR.CSS — mhacks-style Transparent Nav
+   ============================================================
+   Logo left, nav links in a bordered pill container center,
+   CTA buttons on the right. Fully transparent over hero.
+   ============================================================ */
+
+/* ── Navbar Container ────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  padding: var(--space-lg) var(--space-xl);
+  transition: background-color var(--transition-base);
+  background-color: transparent;
+}
+
+/* Scrolled state */
+.navbar.scrolled {
+  background-color: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ── Navbar Inner Layout ─────────────────────────────────────── */
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ── Logo / Brand ────────────────────────────────────────────── */
+.navbar__brand {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-paper);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+
+.navbar__brand:hover {
+  opacity: 0.8;
+}
+
+/* ── Navigation Links — Pill Container (mhacks style) ────────── */
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(243, 236, 221, 0.25);
+  border-radius: var(--radius-full);
+  padding: var(--space-2xs) var(--space-xs);
+  background: rgba(15, 15, 15, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.navbar__link {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-paper);
+  letter-spacing: 0.04em;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.navbar__link:hover {
+  background-color: rgba(243, 236, 221, 0.1);
+  color: var(--color-yellow);
+}
+
+.navbar__link.active {
+  background-color: rgba(243, 236, 221, 0.12);
+  color: var(--color-yellow);
+}
+
+/* ── Nav Actions (CTA buttons) ───────────────────────────────── */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.navbar__cta {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-xs) var(--space-lg);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.03em;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Outline CTA */
+.navbar__cta--outline {
+  color: var(--color-paper);
+  border: 1px solid rgba(243, 236, 221, 0.35);
+  background: transparent;
+}
+
+.navbar__cta--outline:hover {
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+  transform: translateY(-1px);
+}
+
+/* Filled CTA */
+.navbar__cta--filled {
+  color: var(--color-black);
+  background-color: var(--color-yellow);
+  border: 1px solid var(--color-yellow);
+}
+
+.navbar__cta--filled:hover {
+  background-color: var(--color-yellow-bright);
+  transform: translateY(-1px);
+}
+
+/* ── Hamburger Menu Toggle (Mobile) ──────────────────────────── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: calc(var(--z-nav) + 1);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.navbar__hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-paper);
+  border-radius: 2px;
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.navbar__hamburger-line:nth-child(1) {
+  margin-bottom: 6px;
+}
+
+.navbar__hamburger-line:nth-child(3) {
+  margin-top: 6px;
+}
+
+/* Hamburger → X animation */
+.navbar__hamburger.open .navbar__hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: var(--color-yellow);
+}
+
+.navbar__hamburger.open .navbar__hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__hamburger.open .navbar__hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: var(--color-yellow);
+}
+
+/* ── Mobile Responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: var(--space-md) var(--space-md);
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__actions {
+    display: none;
+  }
+
+  /* Mobile nav — full-screen overlay */
+  .navbar__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+    border: none;
+    border-radius: 0;
+    padding: var(--space-3xl);
+    background: rgba(15, 15, 15, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition:
+      opacity var(--transition-base),
+      visibility var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .navbar__nav.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .navbar__link {
+    font-size: var(--text-h4);
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar__link {
+    font-size: var(--text-xs);
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .navbar__nav {
+    gap: 0;
+  }
+}

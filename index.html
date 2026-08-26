@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Singularity — India's National-Level Hackathon | Mumbai</title>
+  <meta name="description"
+    content="Singularity is a national-level hackathon bringing together the brightest minds from across India. Apply now to build, compete, and innovate.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Singularity — India's National-Level Hackathon">
+  <meta property="og:description" content="Build the next big thing. India's premier national-level hackathon.">
+  <meta property="og:image" content="assets/images/home.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base/tokens.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/sections/home.css">
+  <link rel="stylesheet" href="css/utilities/animations.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER / NAVIGATION — mhacks-style
+       Logo left | Links in pill center | CTAs right
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar__inner">
+
+      <!-- Logo -->
+      <a href="#home" class="navbar__brand" aria-label="Singularity - Home">
+        ⚡ Singularity
+      </a>
+
+      <!-- Nav Links in pill container -->
+      <nav class="navbar__nav" id="navMenu" role="navigation" aria-label="Main navigation">
+        <a href="#home" class="navbar__link active">Home</a>
+        <a href="#legacy" class="navbar__link">About</a>
+        <a href="#why-sponsor" class="navbar__link">Sponsors</a>
+        <a href="#tracks" class="navbar__link">Tracks</a>
+        <a href="#team" class="navbar__link">Team</a>
+        <a href="#contact" class="navbar__link">Contact</a>
+      </nav>
+
+      <!-- CTA Buttons -->
+      <div class="navbar__actions">
+        <a href="#contact" class="navbar__cta navbar__cta--outline">Sponsor Us</a>
+        <a href="#TODO-APPLY-LINK" class="navbar__cta navbar__cta--filled">Apply</a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="navbar__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="navMenu">
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO SECTION — Scroll-Driven Video Scrubbing Stage
+       As user scrolls, video scrubs forward: taxi drives & reveals
+       the date "19-20 DECEMBER 2026" painted on Marine Drive.
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="hero-scroll-track" id="home" aria-label="Hero Video Scroll">
+    <div class="hero-sticky-stage">
+      <!-- Background Image Sequence Canvas -->
+      <canvas id="heroCanvas" class="hero__canvas"></canvas>
+
+      <!-- Film Grain Overlay -->
+      <div class="hero__grain" aria-hidden="true"></div>
+
+      <!-- Atmosphere Overlay -->
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <!-- Persistent Title / Logo Layer (stays visible in sky) -->
+      <div class="hero__title-layer" id="heroTitleLayer">
+        <p class="hero__title-tagline">National-Level Hackathon</p>
+        <h1 class="hero__title-main">सिंग्युलॅरिटी</h1>
+        <div class="hero__scroll-cue-container" id="heroScrollCue">
+          <div class="hero__scroll-cue">
+            <span>Scroll to explore</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corner Bottom Bar -->
+      <div class="hero__bottom-bar" id="heroBottomBar">
+        <p class="hero__bottom-tagline">Build something that matters.</p>
+        <p class="hero__bottom-location">Mumbai, India</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkerboard taxi-stripe divider -->
+  <div class="checkerboard-divider" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PLACEHOLDER SECTIONS
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="legacy"
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding);">
+    <div style="text-align: center;">
+      <h2 class="glow-text">Our Legacy</h2>
+      <p class="text-muted" style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
+    </div>
+  </section>
+
+  <div class="checkerboard-divider" aria-hidden="true"></div>
+
+  <section id="why-sponsor"
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-teal-deep); padding: var(--space-3xl) var(--container-padding);">
+    <div style="text-align: center;">
+      <h2 class="glow-text">Why Sponsor Us</h2>
+      <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
+    </div>
+  </section>
+
+  <div class="checkerboard-divider" aria-hidden="true"></div>
+
+  <section id="tracks"
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding);">
+    <div style="text-align: center;">
+      <h2 class="glow-text">Tracks &amp; Challenges</h2>
+      <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
+    </div>
+  </section>
+
+  <div class="checkerboard-divider" aria-hidden="true"></div>
+
+  <section id="team"
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-teal-deep); padding: var(--space-3xl) var(--container-padding);">
+    <div style="text-align: center;">
+      <h2 class="glow-text">Meet the Team</h2>
+      <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
+    </div>
+  </section>
+
+  <div class="checkerboard-divider" aria-hidden="true"></div>
+
+  <section id="contact"
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding);">
+    <div style="text-align: center;">
+      <h2 class="glow-text">Contact Us</h2>
+      <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer
+    style="background-color: var(--color-black-deep); border-top: 1px solid rgba(244, 180, 0, 0.15); padding: var(--space-xl) var(--container-padding); text-align: center;">
+    <p style="color: var(--color-text-muted); font-size: var(--text-small);">
+      © 2027 Singularity. Made with ⚡ in Mumbai.
+    </p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/hero-frame-scroll.js"></script>
+  <script src="js/utils/scroll-reveal.js"></script>
+</body>
+
+</html>
