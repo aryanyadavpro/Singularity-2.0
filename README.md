@@ -48,15 +48,25 @@ Singularity-2.0/
 | 5.7 | Meet the Team       | Core team + volunteers grid                         |
 | 5.8 | Contact Us          | Sponsor inquiry form, brochure download, map        |
 
-## Design Language — "Mumbai Retro"
+## Design Language & Global Color System
 
-| Token             | Value                | Usage                            |
-| ------------------ | -------------------- | -------------------------------- |
-| Taxi Black         | `#1A1A1A` / `#0F0F0F` | Backgrounds, primary text        |
-| Taxi Yellow        | `#F4B400` / `#FFC72C` | CTAs, headlines, primary accent  |
-| Marine Drive Teal  | `#1B4B5A` / `#0E2A38` | Section backgrounds, gradients   |
-| Rust/Neon Orange   | `#E8542B`            | Secondary accent, hover states   |
-| Off-white / Paper  | `#F3ECDD`            | Light sections, "aged poster"    |
+### Global Contrast Rules
+
+| Background Category | Background Color / Gradient | Text Color | CTA Button Background & Text Color |
+| ------------------- | --------------------------- | ---------- | ---------------------------------- |
+| **Dark / Brown / Olive Backgrounds** | `#64502C` (Sponsors), `#897448` (Timeline), `#0F0F0F` (Hero) | `linear-gradient(to right, #f1eedd 0%, #f1eedd 100%)` (`#f1eedd`) | CTA Button: `linear-gradient(to right, #f1eedd 0%, #f1eedd 100%)` with text `#64502C` |
+| **Light / Beige / Cream Backgrounds** | `linear-gradient(to right, #f1eedd 0%, #f1eedd 100%)` (`#f1eedd`) | `#64502C` | CTA Button: `#64502C` with text `#f1eedd` |
+| **Floating Frosted Navbar** | Frosted cream pill `rgba(241, 238, 221, 0.45)` | `#64502C` | CTA Button: `linear-gradient(to right, #f1eedd 0%, #f1eedd 100%)` with text `#64502C` |
+
+### Core Tokens
+
+| Token             | Value                                                  | Usage                            |
+| ----------------- | ------------------------------------------------------ | -------------------------------- |
+| Cream Accent      | `linear-gradient(to right, #f1eedd 0%, #f1eedd 100%)` | Dark section text, CTA pills, light backgrounds |
+| Deep Earth Brown  | `#64502C`                                              | Light section text, dark CTAs, nav text |
+| Golden Olive      | `#897448`                                              | Timeline section background      |
+| Taxi Black        | `#1A1A1A` / `#0F0F0F`                                  | Hero & footer background         |
+| Taxi Yellow       | `#F4B400` / `#FFC72C`                                  | Hero typography accent glow      |
 
 ## Getting Started
 

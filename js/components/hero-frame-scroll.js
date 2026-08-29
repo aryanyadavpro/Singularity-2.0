@@ -32,17 +32,18 @@
   let lenis = null;
   if (typeof window.Lenis !== 'undefined') {
     lenis = new window.Lenis({
-      duration: 1.4,
+      duration: 1.7,
       easing: function (t) {
         return Math.min(1, 1.001 - Math.pow(2, -10 * t));
       },
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.8,
+      wheelMultiplier: 0.85,
+      touchMultiplier: 1.5,
       infinite: false
     });
+    window.lenis = lenis;
 
     function raf(time) {
       lenis.raf(time);

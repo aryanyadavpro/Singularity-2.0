@@ -20,12 +20,15 @@
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
   <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css">
   <link rel="stylesheet" href="css/base/tokens.css">
   <link rel="stylesheet" href="css/base/reset.css">
   <link rel="stylesheet" href="css/base/typography.css">
   <link rel="stylesheet" href="css/components/navbar.css">
   <link rel="stylesheet" href="css/components/buttons.css">
   <link rel="stylesheet" href="css/sections/home.css">
+  <link rel="stylesheet" href="css/sections/why-sponsor.css">
+  <link rel="stylesheet" href="css/sections/timeline.css">
   <link rel="stylesheet" href="css/utilities/animations.css">
 </head>
 
@@ -45,9 +48,9 @@
 
       <!-- Nav Links in pill container -->
       <nav class="navbar__nav" id="navMenu" role="navigation" aria-label="Main navigation">
-        <a href="#home" class="navbar__link active">Home</a>
         <a href="#legacy" class="navbar__link">About</a>
         <a href="#why-sponsor" class="navbar__link">Sponsors</a>
+        <a href="#timeline" class="navbar__link">Timeline</a>
         <a href="#tracks" class="navbar__link">Tracks</a>
         <a href="#team" class="navbar__link">Team</a>
         <a href="#contact" class="navbar__link">Contact</a>
@@ -85,13 +88,39 @@
       <!-- Atmosphere Overlay -->
       <div class="hero__overlay" aria-hidden="true"></div>
 
-      <!-- Persistent Title / Logo Layer (stays visible in sky) -->
+      <!-- Persistent Title / Logo Layer (Sky position on Desktop, Centered on Mobile) -->
       <div class="hero__title-layer" id="heroTitleLayer">
+        <!-- Celestial Sparkles / Accents (Mobile Only) -->
+        <div class="hero__accents mobile-only" aria-hidden="true">
+          <span>✧</span>
+          <span>✦</span>
+          <span>⋆</span>
+        </div>
+
+        <!-- Pill Badge (Mobile Only) -->
+        <div class="hero__badge-pill mobile-only">
+          <span>APPLICATIONS OPEN · OCTOBER 2026</span>
+        </div>
+
+        <!-- Subtitle -->
         <p class="hero__title-tagline">National-Level Hackathon</p>
+
+        <!-- Main Big Title -->
         <h1 class="hero__title-main">सिंग्युलॅरिटी</h1>
-        <div class="hero__scroll-cue-container" id="heroScrollCue">
+
+        <!-- Tagline & Location Meta (Mobile Only) -->
+        <p class="hero__subhead mobile-only">BUILD SOMETHING THAT MATTERS.</p>
+        <p class="hero__meta mobile-only">OCTOBER 3–5, 2026 · MUMBAI, INDIA</p>
+
+        <!-- Stacked CTA Buttons (Mobile Only) -->
+        <div class="hero__cta-stack mobile-only">
+          <a href="#TODO-APPLY-LINK" class="hero__btn hero__btn--primary">Apply</a>
+          <a href="#why-sponsor" class="hero__btn hero__btn--secondary">Sponsor us</a>
+        </div>
+
+        <!-- Scroll Cue (Mobile Only) -->
+        <div class="hero__scroll-cue-container mobile-only" id="heroScrollCue">
           <div class="hero__scroll-cue">
-            <span>Scroll to explore</span>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
             </svg>
@@ -99,62 +128,205 @@
         </div>
       </div>
 
-      <!-- Corner Bottom Bar -->
-      <div class="hero__bottom-bar" id="heroBottomBar">
+      <!-- Desktop Corner Bottom Bar (Restored for Desktop) -->
+      <div class="hero__bottom-bar desktop-only" id="heroBottomBar">
         <p class="hero__bottom-tagline">Build something that matters.</p>
         <p class="hero__bottom-location">Mumbai, India</p>
       </div>
     </div>
   </section>
 
-  <!-- Checkerboard taxi-stripe divider -->
-  <div class="checkerboard-divider" aria-hidden="true"></div>
-
   <!-- ═══════════════════════════════════════════════════════════
-       PLACEHOLDER SECTIONS
+       OUR LEGACY (ABOUT) SECTION — Cream Gradient (#f1eedd)
        ═══════════════════════════════════════════════════════════ -->
   <section id="legacy"
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding);">
+    style="position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; background: linear-gradient(to right, #f1eedd 0%, #f1eedd 100%); color: #64502C; padding: var(--space-3xl) var(--container-padding); border-top-left-radius: clamp(32px, 4vw, 44px); border-top-right-radius: clamp(32px, 4vw, 44px); z-index: 5; box-shadow: 0 -20px 40px rgba(0,0,0,0.25); overflow: hidden;">
     <div style="text-align: center;">
-      <h2 class="glow-text">Our Legacy</h2>
-      <p class="text-muted" style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
+      <h2 style="font-family: var(--font-body, 'Inter', sans-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: #64502C; margin: 0; letter-spacing: -0.02em;">Our Legacy</h2>
+      <p style="margin-top: var(--space-md); color: rgba(100, 80, 44, 0.75); font-size: var(--text-base);">Coming soon</p>
     </div>
   </section>
 
-  <div class="checkerboard-divider" aria-hidden="true"></div>
+  <!-- ═══════════════════════════════════════════════════════════
+       WHY SPONSOR US SECTION — MHacks-style Stacked Card
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="sponsor-section" id="why-sponsor" aria-label="Why Sponsor Singularity">
+    <!-- Grid Overlay -->
+    <div class="sponsor-section__grid" aria-hidden="true"></div>
 
-  <section id="why-sponsor"
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-teal-deep); padding: var(--space-3xl) var(--container-padding);">
-    <div style="text-align: center;">
-      <h2 class="glow-text">Why Sponsor Us</h2>
-      <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
+    <div class="sponsor-section__inner">
+      <!-- Upper Stage: Train Scroll Track with Paper-Cut Stop-Motion -->
+      <div class="sponsor-train-stage">
+        <div class="sponsor-train-wrapper">
+          <img
+            src="assets/images/sponsor/train.png"
+            alt="Mumbai local train"
+            class="sponsor-train-img"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <!-- Middle Content Row: Heading & Status Message -->
+      <div class="sponsor-middle-row">
+        <div class="sponsor-heading-group">
+          <h2 class="sponsor-heading">Our Sponsors</h2>
+          <img
+            src="assets/images/sponsor/sponsor-illustration.png"
+            alt="Sponsor illustration"
+            class="sponsor-illustration"
+          >
+        </div>
+        <p class="sponsor-status-text">
+          Our 2026 sponsor lineup is taking shape, check back soon.
+        </p>
+      </div>
+
+      <!-- Bottom CTA Card (MHacks Style) -->
+      <div class="sponsor-cta-card">
+        <div class="sponsor-cta-info">
+          <h3 class="sponsor-cta-title">
+            <span class="sponsor-cta-title__desktop">Sponsor Singularity 2026.</span>
+            <span class="sponsor-cta-title__mobile">Sponsor Singularity.</span>
+          </h3>
+          <p class="sponsor-cta-desc">Reach 1,000+ technical students from across India.</p>
+        </div>
+        <a href="#contact" class="sponsor-cta-btn">
+          <span class="sponsor-cta-btn__full">Interested in sponsoring? Contact us.</span>
+          <span class="sponsor-cta-btn__short">Contact us</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <div class="checkerboard-divider" aria-hidden="true"></div>
+  <!-- ═══════════════════════════════════════════════════════════
+       TIMELINE SECTION — MHacks-style Stacked Card (#1C2617)
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="timeline-section" id="timeline" aria-label="Singularity Hackathon Timeline">
+    <!-- Interactive DotGrid Animated Canvas Overlay -->
+    <canvas id="timelineDotGridCanvas" class="timeline-dot-grid-canvas"></canvas>
+
+    <div class="timeline-section__inner">
+      <!-- Upper Stage: Mumbai Skyline Panoramic Illustration -->
+      <div class="timeline-stage">
+        <div class="timeline-mumbai-wrapper">
+          <img
+            src="assets/images/timeline/mumbai.png"
+            alt="Mumbai Skyline, Heritage & Culture"
+            class="timeline-mumbai-img"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <!-- Main Timeline Content Area: Header & Table Closer Together -->
+      <div class="timeline-content">
+        <!-- Header Row: Title & Celestial Sparkles (MHacks Exact) -->
+        <div class="timeline-header-row">
+          <div class="timeline-heading-wrapper">
+            <h2 class="timeline-heading">Timeline</h2>
+          </div>
+
+          <!-- Right Celestial Sparkle Constellation -->
+          <div class="timeline-header-sparkles" aria-hidden="true">
+            <div class="timeline-sparkle-top">⋆˚꩜｡.ᐟ</div>
+            <div class="timeline-sparkle-bottom">˖᯽ ݁˖· ─ °❀⋆</div>
+          </div>
+        </div>
+
+        <!-- Timeline Table: 6 Milestone Rows with Staggered Rise-up -->
+        <div class="timeline-table" role="region" aria-label="Timeline Schedule">
+          <!-- Row 1: Applications Open -->
+          <div class="timeline-row">
+            <div class="timeline-date-group">
+              <span class="timeline-day">Mon</span>
+              <span class="timeline-date">June 22</span>
+            </div>
+            <div class="timeline-info-group">
+              <span class="timeline-event-name">Applications open</span>
+            </div>
+          </div>
+
+          <!-- Row 2: Early Applications Due -->
+          <div class="timeline-row">
+            <div class="timeline-date-group">
+              <span class="timeline-day">Fri</span>
+              <span class="timeline-date">August 7</span>
+            </div>
+            <div class="timeline-info-group">
+              <span class="timeline-event-name">Early applications due</span>
+              <span class="timeline-event-time">11:59 PM IST</span>
+            </div>
+          </div>
+
+          <!-- Row 3: Early Decisions Released -->
+          <div class="timeline-row">
+            <div class="timeline-date-group">
+              <span class="timeline-day">Fri</span>
+              <span class="timeline-date">August 14</span>
+            </div>
+            <div class="timeline-info-group">
+              <span class="timeline-event-name">Early decisions released</span>
+            </div>
+          </div>
+
+          <!-- Row 4: Regular Applications Due -->
+          <div class="timeline-row">
+            <div class="timeline-date-group">
+              <span class="timeline-day">Sat</span>
+              <span class="timeline-date">September 12</span>
+            </div>
+            <div class="timeline-info-group">
+              <span class="timeline-event-name">Regular applications due</span>
+              <span class="timeline-event-time">11:59 PM IST</span>
+            </div>
+          </div>
+
+          <!-- Row 5: Regular Decisions Released -->
+          <div class="timeline-row">
+            <div class="timeline-date-group">
+              <span class="timeline-day">Sat</span>
+              <span class="timeline-date">September 19</span>
+            </div>
+            <div class="timeline-info-group">
+              <span class="timeline-event-name">Regular decisions released</span>
+            </div>
+          </div>
+
+          <!-- Row 6: Hackathon Begins -->
+          <div class="timeline-row">
+            <div class="timeline-date-group">
+              <span class="timeline-day">Fri</span>
+              <span class="timeline-date">October 3 - 5</span>
+            </div>
+            <div class="timeline-info-group">
+              <span class="timeline-event-name">Hackathon begins</span>
+              <span class="timeline-event-time">Singularity 2.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="tracks"
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding);">
+    style="position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding); border-top-left-radius: clamp(32px, 4vw, 44px); border-top-right-radius: clamp(32px, 4vw, 44px); z-index: 8; box-shadow: 0 -20px 40px rgba(0,0,0,0.5); overflow: hidden;">
     <div style="text-align: center;">
       <h2 class="glow-text">Tracks &amp; Challenges</h2>
       <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
     </div>
   </section>
 
-  <div class="checkerboard-divider" aria-hidden="true"></div>
-
   <section id="team"
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-teal-deep); padding: var(--space-3xl) var(--container-padding);">
+    style="position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; background-color: var(--color-teal-deep); padding: var(--space-3xl) var(--container-padding); border-top-left-radius: clamp(32px, 4vw, 44px); border-top-right-radius: clamp(32px, 4vw, 44px); z-index: 9; box-shadow: 0 -20px 40px rgba(0,0,0,0.5); overflow: hidden;">
     <div style="text-align: center;">
       <h2 class="glow-text">Meet the Team</h2>
       <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
     </div>
   </section>
 
-  <div class="checkerboard-divider" aria-hidden="true"></div>
-
   <section id="contact"
-    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding);">
+    style="position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; background-color: var(--color-black-deep); padding: var(--space-3xl) var(--container-padding); border-top-left-radius: clamp(32px, 4vw, 44px); border-top-right-radius: clamp(32px, 4vw, 44px); z-index: 10; box-shadow: 0 -20px 40px rgba(0,0,0,0.5); overflow: hidden;">
     <div style="text-align: center;">
       <h2 class="glow-text">Contact Us</h2>
       <p style="margin-top: var(--space-md); color: var(--color-text-muted);">Coming soon</p>
@@ -171,9 +343,13 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/components/navbar.js"></script>
   <script src="js/components/hero-frame-scroll.js"></script>
-  <script src="js/utils/scroll-reveal.js"></script>
+  <script src="js/components/sponsor-scroll.js"></script>
+  <script src="js/components/timeline-scroll.js"></script>
+  <script src="js/components/dot-grid.js"></script>
 </body>
 
 </html>
