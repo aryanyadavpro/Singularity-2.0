@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Singularity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F3ECDD;
+            --text-color: #1A1A1A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SPACER (so user can scroll into the about section) ===== */
+        .hero-spacer {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-spacer h1 {
+            font-size: 3rem;
+            color: #1A1A1A;
+        }
+
+        .hero-spacer p {
+            font-family: 'Inter', sans-serif;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .hero-spacer .arrow {
+            font-size: 2rem;
+            margin-top: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0 0 0;
+            /* Animation: slide up from bottom */
+            opacity: 0;
+            transform: translateY(150px);
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .about-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== STAMP (top-left, slides in from left) ===== */
+        .decorative-stamp {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 220px;
+            height: auto;
+            z-index: 5;
+            pointer-events: none;
+            /* Animation: start off-screen left */
+            opacity: 0;
+            transform: translateX(-110%);
+            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s,
+                        transform 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s;
+        }
+
+        .about-section.visible .decorative-stamp {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== TICKET (right side, vertically centered, slides in from right) ===== */
+        /*
+         * Strategy: Use a wrapper div for the slide-in animation (translateX).
+         * The img inside is statically rotated 90deg.
+         * This avoids the transform axis confusion that happens when
+         * combining translate and rotate on the same element.
+         */
+        .ticket-wrapper {
+            position: absolute;
+            top: 5%;
+            right: -170px; /* Right edge goes off-screen, but content stays visible */
+            z-index: 5;
+            pointer-events: none;
+            /* Animation: start off-screen right */
+            opacity: 0;
+            transform: translateX(calc(100% + 200px));
+            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1) 0.5s,
+                        transform 1s cubic-bezier(0.25, 1, 0.5, 1) 0.5s;
+        }
+
+        .about-section.visible .ticket-wrapper {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /*
+         * Ticket image: 302x537 natural.
+         * At height:400px, rendered size ≈ 225×400.
+         * rotate(90deg) with default center origin:
+         *   - Visual size becomes 400×225 (width×height swap)
+         *   - Center stays at same position
+         *   - Image overflows layout box equally on all sides
+         *   - Overflows right by ~87px, left by ~87px
+         *   - Wrapper right:80px compensates so visual right edge ≈ section right edge
+         */
+        .ticket-image {
+            display: block;
+            height: 300px;
+            width: auto;
+            transform: rotate(-90deg);
+            /* transform-origin defaults to center center — image rotates in place */
+        }
+
+        /* ===== TITLE ===== */
+        .about-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 400;
+            color: #1A1A1A;
+            letter-spacing: 0.05em;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== SHADOW DOT (below title, in the center) ===== */
+        .title-shadow {
+            width: 80px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+            filter: blur(8px);
+            margin: 40px auto 0 auto;
+        }
+
+        /* ===== CAROUSEL ===== */
+        .carousel-container {
+            width: 100%;
+            margin-top: auto;
+            padding-bottom: 30px;
+            overflow: hidden;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-item {
+            width: 220px;
+            height: 170px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            margin-right: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .decorative-stamp {
+                width: 120px;
+            }
+            .ticket-image {
+                height: 200px;
+            }
+            .about-title {
+                font-size: 2rem;
+            }
+            .carousel-item {
+                width: 160px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero spacer so user scrolls into the about section -->
+    <div class="hero-spacer">
+        <h1>Scroll down</h1>
+        <p>To see the legacy animation</p>
+        <span class="arrow">↓</span>
+    </div>
+
+    <!-- About / Our Legacy Section -->
+    <section class="about-section animate-on-scroll">
+
+        <!-- Stamp: top-left corner -->
+        <img src="assets/images/mumbai-stamp.png" alt="Mumbai Stamp" class="decorative-stamp">
+
+        <!-- Ticket: right side, wrapped for clean animation -->
+        <div class="ticket-wrapper">
+            <img src="assets/images/mumbai-ticket.png" alt="Mumbai Ticket" class="ticket-image">
+        </div>
+
+        <!-- Title -->
+        <h2 class="about-title">OUR LEGACY</h2>
+
+        <!-- Shadow dot -->
+        <div class="title-shadow"></div>
+
+        <!-- Photo carousel at bottom -->
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Set 1 -->
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&q=80" alt="Event photo 1"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?w=500&q=80" alt="Event photo 2"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Event photo 3"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80" alt="Event photo 4"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=500&q=80" alt="Event photo 5"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=80" alt="Event photo 6"></div>
+                <!-- Set 2 (duplicate for seamless loop) -->
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&q=80" alt="Event photo 1"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?w=500&q=80" alt="Event photo 2"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Event photo 3"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80" alt="Event photo 4"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=500&q=80" alt="Event photo 5"></div>
+                <div class="carousel-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=80" alt="Event photo 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- Agentation Injection via ESM -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.3.1",
+          "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+          "agentation": "https://esm.sh/agentation@3.0.2?deps=react@18.3.1,react-dom@18.3.1"
+        }
+      }
+    </script>
+    <script type="module">
+      import React from 'react';
+      import { createRoot } from 'react-dom/client';
+      import { Agentation } from 'agentation';
+
+      // Create a mount point for the Agentation toolbar
+      const agentationRoot = document.createElement('div');
+      agentationRoot.id = 'agentation-root';
+      document.body.appendChild(agentationRoot);
+
+      // Render the React component into our vanilla HTML page
+      createRoot(agentationRoot).render(
+        React.createElement(Agentation)
+      );
+    </script>
+</body>
+</html>
