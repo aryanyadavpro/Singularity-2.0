@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="css/sections/home.css">
   <link rel="stylesheet" href="css/sections/why-sponsor.css">
   <link rel="stylesheet" href="css/sections/timeline.css">
+  <link rel="stylesheet" href="css/sections/our-legacy.css">
   <link rel="stylesheet" href="css/utilities/animations.css">
 </head>
 
@@ -137,13 +138,42 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       OUR LEGACY (ABOUT) SECTION — Cream Gradient (#f1eedd)
+       OUR LEGACY (ABOUT) SECTION — Animated: stamp, ticket, carousel
        ═══════════════════════════════════════════════════════════ -->
-  <section id="legacy"
-    style="position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; justify-content: center; background: linear-gradient(to right, #f1eedd 0%, #f1eedd 100%); color: #64502C; padding: var(--space-3xl) var(--container-padding); border-top-left-radius: clamp(32px, 4vw, 44px); border-top-right-radius: clamp(32px, 4vw, 44px); z-index: 5; box-shadow: 0 -20px 40px rgba(0,0,0,0.25); overflow: hidden;">
-    <div style="text-align: center;">
-      <h2 style="font-family: var(--font-body, 'Inter', sans-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: #64502C; margin: 0; letter-spacing: -0.02em;">Our Legacy</h2>
-      <p style="margin-top: var(--space-md); color: rgba(100, 80, 44, 0.75); font-size: var(--text-base);">Coming soon</p>
+  <section class="legacy-section animate-legacy" id="legacy" aria-label="Our Legacy">
+
+    <!-- Stamp: slides in from left -->
+    <img src="assets/images/mumbai-stamp.png" alt="Mumbai Stamp" class="legacy__stamp">
+
+    <!-- Ticket: slides in from right -->
+    <div class="legacy__ticket-wrapper">
+      <img src="assets/images/mumbai-ticket.png" alt="Mumbai Ticket" class="legacy__ticket-img">
+    </div>
+
+    <!-- Title -->
+    <h2 class="legacy__title">OUR LEGACY</h2>
+
+    <!-- Shadow under title -->
+    <div class="legacy__title-shadow"></div>
+
+    <!-- Auto-scrolling photo carousel -->
+    <div class="legacy__carousel">
+      <div class="legacy__carousel-track">
+        <!-- Set 1 -->
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&q=80" alt="Event photo 1" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?w=500&q=80" alt="Event photo 2" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Event photo 3" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80" alt="Event photo 4" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=500&q=80" alt="Event photo 5" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=80" alt="Event photo 6" loading="lazy"></div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&q=80" alt="Event photo 1" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?w=500&q=80" alt="Event photo 2" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt="Event photo 3" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80" alt="Event photo 4" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=500&q=80" alt="Event photo 5" loading="lazy"></div>
+        <div class="legacy__carousel-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=80" alt="Event photo 6" loading="lazy"></div>
+      </div>
     </div>
   </section>
 
@@ -350,6 +380,23 @@
   <script src="js/components/sponsor-scroll.js"></script>
   <script src="js/components/timeline-scroll.js"></script>
   <script src="js/components/dot-grid.js"></script>
+
+  <!-- Legacy section scroll-trigger -->
+  <script>
+    (function () {
+      var legacyEl = document.querySelector('.animate-legacy');
+      if (!legacyEl) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      observer.observe(legacyEl);
+    })();
+  </script>
 </body>
 
 </html>
