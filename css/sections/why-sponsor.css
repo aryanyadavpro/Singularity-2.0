@@ -1,0 +1,394 @@
+/* ============================================================
+   WHY-SPONSOR.CSS — MHacks-Exact Sponsors Section & Stacking
+   ============================================================
+   Features:
+   1. Curtain-style stacking: position: sticky, top: 0, height: 100vh.
+   2. Background #64502C with 15-16 grid squares (desktop) / 4-4.5 (mobile).
+   3. Train sized and anchored naturally in top-right without overlapping text.
+   4. Desktop layout: Heading left, 17px Status text right, equal vertical gap to CTA.
+   5. Mobile layout: Scaled train showing front engine, stacked heading and 17px status text.
+   6. Translucent CTA card with clearly visible grid lines.
+   ============================================================ */
+
+/* ── Google Fonts Import for Editorial Serif Italic ─────────── */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Section Container (Sticky Curtain Stacking Layer) ───────── */
+.sponsor-section {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  z-index: 6;
+  background-color: #64502C;
+  border-top-left-radius: clamp(32px, 4vw, 44px);
+  border-top-right-radius: clamp(32px, 4vw, 44px);
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(2.2rem, 3.8vh, 3.5rem) clamp(2rem, 5vw, 5rem) clamp(2.75rem, 4.5vh, 4rem);
+  overflow: hidden;
+  color: #F4EBD9;
+  box-sizing: border-box;
+}
+
+/* ── Exact MHacks Grid Pattern (15-16 Desktop, 4-4.5 Mobile) ─── */
+.sponsor-section__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(244, 235, 217, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 235, 217, 0.08) 1px, transparent 1px);
+  background-size: calc(100vw / 15.5) calc(100vw / 15.5);
+  z-index: 1;
+}
+
+/* ── Inner Full-Height Wrapper ───────────────────────────────── */
+.sponsor-section__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width, 1280px);
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ── Upper Stage: Top-Right Train Stage ──────────────────────── */
+.sponsor-train-stage {
+  position: relative;
+  width: auto;
+  margin-inline: -8vw;
+  height: clamp(140px, 20vh, 200px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: visible;
+  pointer-events: none;
+  margin-bottom: clamp(1rem, 2.5vh, 2rem);
+}
+
+.sponsor-train-wrapper {
+  position: absolute;
+  right: -2vw;
+  top: clamp(-0.5rem, 0.5vh, 0.75rem);
+  width: clamp(620px, 54vw, 840px);
+  max-width: none;
+  will-change: transform;
+  transform: translateX(45vw);
+  display: flex;
+  align-items: center;
+}
+
+/* ── Train Image & Subtle Paper-Cut Stop-Motion Jitter ──────── */
+.sponsor-train-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.32));
+  transform-origin: center center;
+  animation: paperCutWiggle 3.5s steps(5) infinite alternate;
+}
+
+/* Subtle, natural stop-motion paper-cut micro-jitter */
+@keyframes paperCutWiggle {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  25% {
+    transform: rotate(-0.5deg) translateY(-1px);
+  }
+  50% {
+    transform: rotate(0.4deg) translateY(0.5px);
+  }
+  75% {
+    transform: rotate(-0.3deg) translateY(-0.5px);
+  }
+  100% {
+    transform: rotate(0.5deg) translateY(0px);
+  }
+}
+
+.sponsor-train-img.is-scrolling {
+  animation: paperCutScrollSmooth 0.4s steps(3) infinite alternate;
+}
+
+@keyframes paperCutScrollSmooth {
+  0% {
+    transform: rotate(-0.7deg) translateY(-1px);
+  }
+  50% {
+    transform: rotate(0.8deg) translateY(1px);
+  }
+  100% {
+    transform: rotate(-0.3deg) translateY(0px);
+  }
+}
+
+/* ── Middle Area: Heading (Left) & Status Text (Right) ───────── */
+.sponsor-middle-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-xl, 2rem);
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.sponsor-heading-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+/* Heading: MHacks scale, weight 500, clean sentence case */
+.sponsor-heading {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: #f1eedd;
+  letter-spacing: -0.015em;
+  text-transform: none;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.sponsor-illustration {
+  height: clamp(30px, 2.8vw, 40px);
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+  transform-origin: center bottom;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sponsor-heading-group:hover .sponsor-illustration {
+  transform: rotate(-6deg) scale(1.08);
+}
+
+/* Status Text: 17px font size on the right side (Desktop) matching Image 2 */
+.sponsor-status-text {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(241, 238, 221, 0.85);
+  letter-spacing: 0.015em;
+  text-align: right;
+  margin: 0 0 0.35rem 0;
+  white-space: nowrap;
+}
+
+/* ── Bottom CTA Card (Translucent with visible grid lines) ───── */
+.sponsor-cta-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(241, 238, 221, 0.18);
+  border-radius: clamp(16px, 2.2vw, 24px);
+  padding: clamp(1.4rem, 2.4vh, 2.1rem) clamp(1.8rem, 3.2vw, 2.85rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl, 2rem);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  margin-bottom: clamp(0.25rem, 1vh, 1rem);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.sponsor-cta-card:hover {
+  border-color: rgba(241, 238, 221, 0.35);
+}
+
+.sponsor-cta-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sponsor-cta-title {
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.85rem, 2.8vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #f1eedd;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+.sponsor-cta-title__desktop {
+  display: inline;
+}
+
+.sponsor-cta-title__mobile {
+  display: none;
+}
+
+.sponsor-cta-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: rgba(241, 238, 221, 0.8);
+  letter-spacing: 0.015em;
+  margin: 0.45rem 0 0 0;
+}
+
+/* Pill Contact Button */
+.sponsor-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(0.85rem, 0.92vw, 0.92rem);
+  font-weight: 600;
+  color: #64502C;
+  background: linear-gradient(to right, #f1eedd 0%, #f1eedd 100%);
+  border: 1px solid #f1eedd;
+  border-radius: var(--radius-full, 9999px);
+  padding: clamp(0.7rem, 1.2vh, 0.85rem) clamp(1.4rem, 1.8vw, 2rem);
+  white-space: nowrap;
+  letter-spacing: 0.015em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition:
+    background 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sponsor-cta-btn:hover {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #4A3A1F;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.sponsor-cta-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.sponsor-cta-btn__full {
+  display: inline;
+}
+
+.sponsor-cta-btn__short {
+  display: none;
+}
+
+/* ── Mobile Responsive Styles (Exact Match to Images 1 & 3) ─── */
+@media (max-width: 768px) {
+  .sponsor-section {
+    padding: clamp(1.75rem, 3vh, 2.5rem) 1.25rem clamp(2.5rem, 4.5vh, 3.5rem);
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .sponsor-section__grid {
+    background-size: calc(100vw / 4.25) calc(100vw / 4.25);
+  }
+
+  .sponsor-train-stage {
+    margin-inline: -0.5rem;
+    margin-bottom: 5px;
+    height: clamp(110px, 16vh, 150px);
+    margin-top: 155px;
+  }
+
+  .sponsor-train-wrapper {
+    width: clamp(330px, 88vw, 420px);
+    right: -4vw;
+    top: 0;
+    transform: translateX(50vw);
+  }
+
+  .sponsor-middle-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .sponsor-heading-group {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 3px;
+  }
+
+  .sponsor-heading {
+    font-size: clamp(1.75rem, 7.5vw, 2.2rem);
+    font-weight: 500;
+  }
+
+  .sponsor-illustration {
+    height: clamp(28px, 6.5vw, 34px);
+  }
+
+  .sponsor-status-text {
+    text-align: left;
+    font-size: 17px;
+    line-height: 1.45;
+    white-space: normal;
+    color: rgba(244, 235, 217, 0.85);
+    margin: 0;
+  }
+
+  /* Elevated, prominent mobile CTA matching Image 3 */
+  .sponsor-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 4.5vw, 2rem) clamp(1.35rem, 4vw, 1.75rem);
+    border-radius: 18px;
+    margin-bottom: clamp(6.5rem, 1.5vh, 1.25rem);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .sponsor-cta-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.15rem);
+  }
+
+  .sponsor-cta-title__desktop {
+    display: none;
+  }
+
+  .sponsor-cta-title__mobile {
+    display: inline;
+  }
+
+  .sponsor-cta-desc {
+    font-size: clamp(0.88rem, 3.8vw, 0.95rem);
+    line-height: 1.4;
+    margin-top: 0.45rem;
+  }
+
+  .sponsor-cta-btn {
+    width: auto;
+    padding: 0.75rem 1.65rem;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+
+  .sponsor-cta-btn__full {
+    display: none;
+  }
+
+  .sponsor-cta-btn__short {
+    display: inline;
+  }
+}

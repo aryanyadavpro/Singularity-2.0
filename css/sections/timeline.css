@@ -1,0 +1,359 @@
+/* ============================================================
+   TIMELINE.CSS — MHacks-Exact Timeline Section & Table
+   ============================================================
+   Features:
+   1. Curtain-style stacking: position: sticky, top: 0, height: 100vh / 100svh.
+   2. Background #897448 (MHacks warm golden-olive).
+   3. Interactive animated DotGrid canvas overlay with proximity color glow,
+      inertia displacement, and click shockwave.
+   4. Content is focused in the vertical center of the viewport with
+      equal, balanced breathing space at the top (start) and bottom.
+   5. Exact image sizing copied from sponsor section (desktop & mobile).
+   6. Timeline header and table tightly unified in .timeline-content.
+   7. Normal font weight for data text, clean static rows without shifts.
+   ============================================================ */
+
+/* ── Google Fonts Import for editorial & monospace accents ───── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── Section Container (Sticky Curtain Stacking Layer) ───────── */
+.timeline-section {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  z-index: 7;
+  background-color: #897448;
+  border-top-left-radius: clamp(32px, 4vw, 48px);
+  border-top-right-radius: clamp(32px, 4vw, 48px);
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(1.5rem, 3.5vh, 3rem) clamp(1.5rem, 5vw, 5rem);
+  overflow: hidden;
+  color: #F4EBD9;
+  box-sizing: border-box;
+}
+
+/* ── Interactive DotGrid HTML5 Canvas Overlay ────────────────── */
+.timeline-dot-grid-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Inner Wrapper: Centered in Viewport with Top/Bottom Balance ── */
+.timeline-section__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width, 1280px);
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(0.75rem, 2vh, 1.75rem);
+}
+
+/* ── Upper Stage: Exactly Matching Sponsor Train Stage Sizing ─── */
+.timeline-stage {
+  position: relative;
+  width: auto;
+  margin-inline: -8vw;
+  height: clamp(130px, 18vh, 190px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: visible;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.timeline-mumbai-wrapper {
+  position: absolute;
+  right: -2vw;
+  top: clamp(-3.5rem, -5.5vh, 1.75rem);
+  width: clamp(620px, 54vw, 840px);
+  max-width: none;
+  will-change: transform;
+  transform: translateX(45vw);
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ── Mumbai Image & Paper-Cut Micro-Jitter ───────────────────── */
+.timeline-mumbai-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.32));
+  transform-origin: center center;
+  animation: timelinePaperCutWiggle 3.5s steps(5) infinite alternate;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.timeline-mumbai-wrapper:hover .timeline-mumbai-img {
+  transform: translateY(-4px) scale(1.02);
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.48)) drop-shadow(0 0 20px rgba(244, 235, 217, 0.18));
+}
+
+@keyframes timelinePaperCutWiggle {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  25% {
+    transform: rotate(0.4deg) translateY(-0.8px);
+  }
+  50% {
+    transform: rotate(-0.5deg) translateY(0.6px);
+  }
+  75% {
+    transform: rotate(0.3deg) translateY(-0.4px);
+  }
+  100% {
+    transform: rotate(-0.4deg) translateY(0px);
+  }
+}
+
+.timeline-mumbai-img.is-scrolling {
+  animation: timelinePaperCutScrollSmooth 0.35s steps(3) infinite alternate;
+}
+
+@keyframes timelinePaperCutScrollSmooth {
+  0% {
+    transform: rotate(-0.6deg) translateY(-1px);
+  }
+  50% {
+    transform: rotate(0.7deg) translateY(1px);
+  }
+  100% {
+    transform: rotate(-0.3deg) translateY(0px);
+  }
+}
+
+/* ── Main Content Container (Header + Table Tightly Grouped) ─── */
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+/* ── Header Row: Title & MHacks Celestial Sparkles ───────────── */
+.timeline-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+  margin-bottom: clamp(0.4rem, 1vh, 0.75rem);
+  padding-bottom: 2px;
+}
+
+.timeline-heading-wrapper {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.timeline-heading {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.05;
+  color: #f1eedd;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: none;
+}
+
+/* Exact MHacks Celestial Sparkles Constellation ⋆˚꩜｡.ᐟ / ˖᯽ ݁˖· ─ °❀⋆ */
+.timeline-header-sparkles {
+  font-family: 'Space Mono', 'Inter', monospace, sans-serif;
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  line-height: 1.45;
+  color: rgba(241, 238, 221, 0.78);
+  text-align: right;
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: 0.14em;
+  margin-bottom: 2px;
+}
+
+.timeline-sparkle-top {
+  letter-spacing: 0.22em;
+}
+
+.timeline-sparkle-bottom {
+  letter-spacing: 0.16em;
+}
+
+/* ── Timeline Table & Rows Container ─────────────────────────── */
+.timeline-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(241, 238, 221, 0.18);
+}
+
+/* ── Individual Timeline Row (Clean, Static, No Shifts) ──────── */
+.timeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.8rem, 1.2vh, 0.9rem) clamp(0.25rem, 0.8vw, 0.6rem);
+  border-bottom: 1px solid rgba(241, 238, 221, 0.18);
+  position: relative;
+  border-radius: 4px;
+  will-change: transform, opacity;
+}
+
+/* Left Group: Monospace Day Badge & Large Date */
+.timeline-date-group {
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(0.75rem, 1.6vw, 1.8rem);
+  flex-shrink: 0;
+}
+
+.timeline-day {
+  font-family: 'Space Mono', 'Inter', monospace, sans-serif;
+  font-size: clamp(0.72rem, 0.85vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(241, 238, 221, 0.55);
+  min-width: clamp(2rem, 2.6vw, 3rem);
+}
+
+.timeline-date {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: #f1eedd;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* Right Group: Normal Weight Status Text & Monospace Time */
+.timeline-info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+  gap: 2px;
+}
+
+.timeline-event-name {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(0.82rem, 1.05vw, 0.98rem);
+  font-weight: 400; /* Normal weight matching MHacks */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f1eedd;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.timeline-event-time {
+  font-family: 'Space Mono', var(--font-body, 'Inter'), monospace;
+  font-size: clamp(0.7rem, 0.82vw, 0.8rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(241, 238, 221, 0.7);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ── Mobile Responsive Styles (Centered Focus & Top/Bottom Balance) ─ */
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: clamp(1.25rem, 2.5vh, 2rem) 1.25rem;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    height: 100vh;
+    height: 100svh;
+    justify-content: center;
+  }
+
+  .timeline-section__inner {
+    margin: auto 0;
+    justify-content: center;
+    gap: clamp(2.15rem, 1.5vh, 1rem);
+  }
+
+  /* Stage matching sponsor train stage on mobile */
+  .timeline-stage {
+    margin-inline: -0.5rem;
+    height: clamp(90px, 14vh, 125px);
+    margin-bottom: 0;
+  }
+
+  .timeline-mumbai-wrapper {
+    width: clamp(330px, 88vw, 420px);
+    right: -4vw;
+    top: 0;
+    transform: translateX(50vw);
+  }
+
+  .timeline-content {
+    margin: 0;
+  }
+
+  .timeline-header-row {
+    margin-bottom: 0.35rem;
+    align-items: flex-end;
+  }
+
+  .timeline-heading {
+    font-size: clamp(1.85rem, 7.8vw, 2.3rem);
+  }
+
+  .timeline-header-sparkles {
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  /* Table Rows on Mobile */
+  .timeline-row {
+    padding: clamp(1.5rem, 1.1vh, 0.72rem) 0.15rem;
+  }
+
+  .timeline-date-group {
+    gap: 0.65rem;
+  }
+
+  .timeline-day {
+    font-size: 0.68rem;
+    min-width: 1.6rem;
+  }
+
+  .timeline-date {
+    font-size: clamp(1.22rem, 5.2vw, 1.48rem);
+    white-space: nowrap;
+  }
+
+  .timeline-event-name {
+    font-size: clamp(0.7rem, 2.8vw, 0.82rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .timeline-event-time {
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+}
